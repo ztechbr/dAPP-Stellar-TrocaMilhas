@@ -12,3 +12,6 @@ overflow-checks = true
 lto = true
 codegen-units = 1
 panic = "abort"
+
+[dev-dependencies]
+soroban-sdk = { version = "22.0.0", features = ["testutils"] }
