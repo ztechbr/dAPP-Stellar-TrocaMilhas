@@ -1,3 +1,6 @@
+// Módulo do aplicativo. Compile com "compile.bat android" (APK de debug).
+// API_BASE_URL vira BuildConfig.API_BASE_URL; padrão 10.0.2.2 = localhost do PC visto pelo emulador.
+// Para outra URL, no cmd: "set API_BASE_URL=https://api.seu-dominio.com" e depois "compile android".
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")

@@ -1,17 +1,35 @@
+# =============================================================================
+# MotoClube Coin - manifesto do contrato Soroban
+# -----------------------------------------------------------------------------
+# Tutorial rápido:
+#   * `crate-type = ["cdylib"]` gera um .wasm que a rede Stellar executa.
+#   * A versão do soroban-sdk acompanha a Stellar CLI instalada (26.x).
+#     Versões antigas (22.x) não compilam mais os testes porque resolvem
+#     dependências criptográficas incompatíveis (ed25519-dalek 3.x).
+#   * O perfil `release` é otimizado para tamanho: contratos menores custam
+#     menos taxa de deploy e de execução.
+# =============================================================================
 [package]
 name = "motoclube_coin"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
+
 [lib]
 crate-type = ["cdylib"]
+
 [dependencies]
-soroban-sdk = "22.0.0"
+soroban-sdk = "26.1.1"
+
+[dev-dependencies]
+# `testutils` habilita o ambiente simulado usado em `cargo test`.
+soroban-sdk = { version = "26.1.1", features = ["testutils"] }
+
 [profile.release]
-opt-level = "z"
-overflow-checks = true
+opt-level = "z"          # prioriza tamanho do binário
+overflow-checks = true   # aritmética que estoura vira pânico, nunca valor errado
 lto = true
 codegen-units = 1
 panic = "abort"
-
-[dev-dependencies]
-soroban-sdk = { version = "22.0.0", features = ["testutils"] }
+debug = 0
+strip = "symbols"
+debug-assertions = false

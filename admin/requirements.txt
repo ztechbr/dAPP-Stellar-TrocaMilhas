@@ -1,3 +1,4 @@
+# Dependências do painel. Instaladas por "compile.bat admin" em admin/.venv.
 Flask>=3.1,<4
 Flask-WTF>=1.2,<2
 Flask-Limiter>=3.8,<5
